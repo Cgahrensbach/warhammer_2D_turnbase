@@ -28,7 +28,7 @@ def draw_panel():
     screen.blit(panel_wood_img, (0, screen_height - bottom_panel))
 
 #stabba class
-class Stabba():
+class Soldier():
     def __init__(self, x, y, name, max_hp, strength, potions):
         self.name = name
         self.max_hp = max_hp
@@ -36,7 +36,15 @@ class Stabba():
         self.strength = strength
         self.start_potion = potions
         self.potions = potions
-        self.image = pygame.image.load("")
+        self.image = pygame.image.load("assets/characters/tiny_rpg_chars_placeholders/Characters(100x100)/Soldier/Soldier/Soldier-Idle.png")
+        self.rect = self.image.get_rect()
+        self.rect.center = (x,y)
+
+    def draw(self):
+        screen.blit(self.image, self.rect)
+
+    soldiers = Soldier(200, 260, "Soldier", 30, 10, 3)
+
 run = True
 while run:
     
@@ -47,6 +55,9 @@ while run:
     
     #draw panel
     draw_panel()
+
+    #draw soldiers
+    soldiers.draw()
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
